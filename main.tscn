@@ -1,3 +1,295 @@
-[gd_scene format=3 uid="uid://biyyejk3jgomd"]
+[gd_scene load_steps=4 format=3 uid="uid://biyyejk3jgomd"]
+
+[ext_resource type="Script" path="res://src/menu_controller.gd" id="1_7x6vp"]
+[ext_resource type="LabelSettings" uid="uid://1oyxx8ys1m6d" path="res://font.res" id="2_yfgsl"]
+[ext_resource type="Script" path="res://src/Scroll_Label.gd" id="3_v2ba3"]
 
 [node name="main" type="Node"]
+
+[node name="MainMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7x6vp")
+
+[node name="MainContainer" type="VBoxContainer" parent="MainMenu"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -50.5
+offset_right = 100.0
+offset_bottom = 50.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Start_button" type="Button" parent="MainMenu/MainContainer"]
+layout_mode = 2
+text = "START"
+
+[node name="Option_button" type="Button" parent="MainMenu/MainContainer"]
+layout_mode = 2
+text = "OPTION"
+
+[node name="Exit_button" type="Button" parent="MainMenu/MainContainer"]
+layout_mode = 2
+text = "EXIT
+"
+
+[node name="OptionContainer" type="VBoxContainer" parent="MainMenu"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -250.0
+offset_right = 250.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="MainMenu/OptionContainer"]
+custom_minimum_size = Vector2(0, 500)
+layout_mode = 2
+tab_alignment = 1
+
+[node name="Video" type="TabBar" parent="MainMenu/OptionContainer/TabContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="General_Label" type="Label" parent="MainMenu/OptionContainer/TabContainer/Video"]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 2.0
+offset_right = 95.0
+offset_bottom = 31.0
+text = "General"
+label_settings = ExtResource("2_yfgsl")
+
+[node name="Resolution_Label" type="Label" parent="MainMenu/OptionContainer/TabContainer/Video"]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 42.0
+offset_right = 157.0
+offset_bottom = 68.0
+text = "Resolution :"
+
+[node name="Resolution_Optionbutton" type="OptionButton" parent="MainMenu/OptionContainer/TabContainer/Video"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 26.0
+offset_top = 74.0
+offset_right = 194.0
+offset_bottom = 98.0
+item_count = 10
+popup/item_0/text = "640x480"
+popup/item_0/id = 0
+popup/item_1/text = "800x600"
+popup/item_1/id = 1
+popup/item_2/text = "1024x768"
+popup/item_2/id = 2
+popup/item_3/text = "1280x720"
+popup/item_3/id = 3
+popup/item_4/text = "1366x768"
+popup/item_4/id = 4
+popup/item_5/text = "1600x900"
+popup/item_5/id = 5
+popup/item_6/text = "1920x1080"
+popup/item_6/id = 6
+popup/item_7/text = "2560x1440"
+popup/item_7/id = 7
+popup/item_8/text = "3840x2160"
+popup/item_8/id = 8
+popup/item_9/text = "7680x4320"
+popup/item_9/id = 9
+
+[node name="WindowMode_Label" type="Label" parent="MainMenu/OptionContainer/TabContainer/Video"]
+layout_mode = 0
+offset_left = 330.0
+offset_top = 42.0
+offset_right = 450.0
+offset_bottom = 68.0
+text = "Window Mode :"
+
+[node name="WindowMode_Optionbutton" type="OptionButton" parent="MainMenu/OptionContainer/TabContainer/Video"]
+layout_mode = 0
+offset_left = 306.0
+offset_top = 74.0
+offset_right = 474.0
+offset_bottom = 98.0
+
+[node name="Vsync_Label" type="Label" parent="MainMenu/OptionContainer/TabContainer/Video"]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 130.0
+offset_right = 71.0
+offset_bottom = 156.0
+text = "Vsync"
+
+[node name="Vsync_CheckButton" type="CheckButton" parent="MainMenu/OptionContainer/TabContainer/Video"]
+layout_mode = 0
+offset_left = 82.0
+offset_top = 131.0
+offset_right = 126.0
+offset_bottom = 155.0
+
+[node name="Color_blind" type="Label" parent="MainMenu/OptionContainer/TabContainer/Video"]
+layout_mode = 0
+offset_left = 178.0
+offset_top = 131.0
+offset_right = 311.0
+offset_bottom = 157.0
+text = "Color blind mode"
+
+[node name="ColorBlind_OptionButton" type="OptionButton" parent="MainMenu/OptionContainer/TabContainer/Video"]
+layout_mode = 0
+offset_left = 322.0
+offset_top = 127.0
+offset_right = 482.0
+offset_bottom = 158.0
+item_count = 4
+selected = 0
+popup/item_0/text = "OFF"
+popup/item_0/id = 0
+popup/item_1/text = "Protanopia"
+popup/item_1/id = 1
+popup/item_2/text = "Deuteranopia"
+popup/item_2/id = 2
+popup/item_3/text = "Tritanopia"
+popup/item_3/id = 3
+
+[node name="Graphics_Label" type="Label" parent="MainMenu/OptionContainer/TabContainer/Video"]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 191.0
+offset_right = 103.0
+offset_bottom = 220.0
+text = "Graphics"
+label_settings = ExtResource("2_yfgsl")
+
+[node name="Preset_HSlider" type="HSlider" parent="MainMenu/OptionContainer/TabContainer/Video"]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 279.0
+offset_right = 378.0
+offset_bottom = 295.0
+max_value = 20.0
+step = 5.0
+value = 5.0
+
+[node name="Preset_Label" type="Label" parent="MainMenu/OptionContainer/TabContainer/Video/Preset_HSlider"]
+layout_mode = 0
+offset_top = -24.0
+offset_right = 352.0
+offset_bottom = -1.0
+text = " Low  	   medium          high 	    very high      ultra"
+
+[node name="Sound" type="TabBar" parent="MainMenu/OptionContainer/TabContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="General_Label" type="Label" parent="MainMenu/OptionContainer/TabContainer/Sound"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 46.0
+offset_right = 48.0
+offset_bottom = 69.0
+text = "General volume :"
+
+[node name="General_HScrollBar" type="HScrollBar" parent="MainMenu/OptionContainer/TabContainer/Sound"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 78.0
+offset_right = 458.0
+offset_bottom = 94.0
+value = 70.0
+rounded = true
+
+[node name="Scroll_Label" type="Label" parent="MainMenu/OptionContainer/TabContainer/Sound/General_HScrollBar"]
+layout_mode = 0
+offset_left = 456.0
+offset_top = -5.0
+offset_right = 489.0
+offset_bottom = 21.0
+text = "70%"
+script = ExtResource("3_v2ba3")
+
+[node name="Music_Label" type="Label" parent="MainMenu/OptionContainer/TabContainer/Sound"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 99.0
+offset_right = 142.0
+offset_bottom = 125.0
+text = "Music volume :"
+
+[node name="Music_HScrollBar" type="HScrollBar" parent="MainMenu/OptionContainer/TabContainer/Sound"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 124.0
+offset_right = 458.0
+offset_bottom = 140.0
+value = 67.0
+rounded = true
+
+[node name="Scroll_Label" type="Label" parent="MainMenu/OptionContainer/TabContainer/Sound/Music_HScrollBar"]
+layout_mode = 0
+offset_left = 456.0
+offset_top = -5.0
+offset_right = 489.0
+offset_bottom = 21.0
+text = "67%"
+script = ExtResource("3_v2ba3")
+
+[node name="SFX_Label" type="Label" parent="MainMenu/OptionContainer/TabContainer/Sound"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 146.0
+offset_right = 142.0
+offset_bottom = 172.0
+text = "SFX volume :"
+
+[node name="SFX_HScrollBar" type="HScrollBar" parent="MainMenu/OptionContainer/TabContainer/Sound"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 171.0
+offset_right = 458.0
+offset_bottom = 187.0
+value = 67.0
+rounded = true
+
+[node name="Scroll_Label" type="Label" parent="MainMenu/OptionContainer/TabContainer/Sound/SFX_HScrollBar"]
+layout_mode = 0
+offset_left = 456.0
+offset_top = -5.0
+offset_right = 489.0
+offset_bottom = 21.0
+text = "67%"
+script = ExtResource("3_v2ba3")
+
+[node name="Control" type="TabBar" parent="MainMenu/OptionContainer/TabContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[connection signal="pressed" from="MainMenu/MainContainer/Start_button" to="MainMenu" method="_on_start_button_pressed"]
+[connection signal="toggled" from="MainMenu/MainContainer/Option_button" to="MainMenu" method="_on_option_button_toggled"]
+[connection signal="pressed" from="MainMenu/MainContainer/Exit_button" to="MainMenu" method="_on_exit_button_pressed"]
+[connection signal="item_selected" from="MainMenu/OptionContainer/TabContainer/Video/Resolution_Optionbutton" to="MainMenu" method="_on_resolution_optionbutton_item_selected"]
+[connection signal="item_selected" from="MainMenu/OptionContainer/TabContainer/Video/WindowMode_Optionbutton" to="MainMenu" method="_on_window_mode_optionbutton_item_selected"]
+[connection signal="pressed" from="MainMenu/OptionContainer/TabContainer/Video/Vsync_CheckButton" to="MainMenu" method="_on_vsync_check_button_pressed"]
+[connection signal="value_changed" from="MainMenu/OptionContainer/TabContainer/Video/Preset_HSlider" to="MainMenu" method="_on_preset_h_slider_value_changed"]
+[connection signal="value_changed" from="MainMenu/OptionContainer/TabContainer/Sound/General_HScrollBar" to="MainMenu/OptionContainer/TabContainer/Sound/General_HScrollBar/Scroll_Label" method="_on_h_scroll_bar_value_changed"]
+[connection signal="value_changed" from="MainMenu/OptionContainer/TabContainer/Sound/Music_HScrollBar" to="MainMenu/OptionContainer/TabContainer/Sound/Music_HScrollBar/Scroll_Label" method="_on_h_scroll_bar_value_changed"]
+[connection signal="value_changed" from="MainMenu/OptionContainer/TabContainer/Sound/SFX_HScrollBar" to="MainMenu/OptionContainer/TabContainer/Sound/SFX_HScrollBar/Scroll_Label" method="_on_h_scroll_bar_value_changed"]

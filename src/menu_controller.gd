@@ -1,17 +1,36 @@
 extends Control
+# Please check the documentation about
+# Displayserver class : https://docs.godotengine.org/en/stable/classes/class_displayserver.html
+#
+#--
+# Check out Colorblind add for godot : https://github.com/paulloz/godot-colorblindness
+#--
 
+@onready var Resolution_ob = get_node("%Resolution_Optionbutton")
+@onready var OptionContainer = get_node("%OptionContainer")
+
+func _get_resolution(index):
+	var resolution_arr = Resolution_ob.get_item_text(index).split("x")
+	return Vector2i(int(resolution_arr[0]),int(resolution_arr[1]))
+
+func _check_resolution( resolution : Vector2i):
+	for i in Resolution_ob.get_item_count() :
+		if _get_resolution(i) == resolution :
+			return i
 
 
 func _ready():
-	pass # Replace with function body.
+	DisplayServer.window_set_size(DisplayServer.screen_get_size())
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
+	Resolution_ob.select(_check_resolution(DisplayServer.screen_get_size()))
 
 
 
-func _process(delta):
-	pass
 
 
 func _on_start_button_pressed():
+	# Put your load scene here
+	# Check the documentation https://docs.godotengine.org/en/stable/tutorials/scripting/change_scenes_manually.html
 	pass # Replace with function body.
 
 
@@ -21,3 +40,21 @@ func _on_option_button_toggled(button_pressed):
 
 func _on_exit_button_pressed():
 	get_tree().quit()
+
+
+func _on_resolution_optionbutton_item_selected(index):
+	DisplayServer.window_set_size(_get_resolution(index))
+	
+	#Window.size = _get_resolution(index)
+
+
+func _on_window_mode_optionbutton_item_selected(index):
+	pass # Replace with function body.
+
+
+func _on_vsync_check_button_pressed():
+	pass # Replace with function body.
+
+
+func _on_preset_h_slider_value_changed(value):
+	pass # Replace with function body.
