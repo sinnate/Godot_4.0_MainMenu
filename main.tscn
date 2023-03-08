@@ -65,6 +65,7 @@ layout_mode = 2
 tab_alignment = 1
 
 [node name="Video" type="TabBar" parent="MainMenu/OptionContainer/TabContainer"]
+visible = false
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
@@ -196,7 +197,6 @@ offset_bottom = -1.0
 text = " Low  	   medium          high 	    very high      ultra"
 
 [node name="Sound" type="TabBar" parent="MainMenu/OptionContainer/TabContainer"]
-visible = false
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
@@ -290,6 +290,9 @@ layout_mode = 2
 [connection signal="item_selected" from="MainMenu/OptionContainer/TabContainer/Video/WindowMode_Optionbutton" to="MainMenu" method="_on_window_mode_optionbutton_item_selected"]
 [connection signal="pressed" from="MainMenu/OptionContainer/TabContainer/Video/Vsync_CheckButton" to="MainMenu" method="_on_vsync_check_button_pressed"]
 [connection signal="value_changed" from="MainMenu/OptionContainer/TabContainer/Video/Preset_HSlider" to="MainMenu" method="_on_preset_h_slider_value_changed"]
+[connection signal="value_changed" from="MainMenu/OptionContainer/TabContainer/Sound/General_HScrollBar" to="MainMenu" method="_on_general_h_scroll_bar_value_changed"]
 [connection signal="value_changed" from="MainMenu/OptionContainer/TabContainer/Sound/General_HScrollBar" to="MainMenu/OptionContainer/TabContainer/Sound/General_HScrollBar/Scroll_Label" method="_on_h_scroll_bar_value_changed"]
+[connection signal="value_changed" from="MainMenu/OptionContainer/TabContainer/Sound/Music_HScrollBar" to="MainMenu" method="_on_music_h_scroll_bar_value_changed"]
 [connection signal="value_changed" from="MainMenu/OptionContainer/TabContainer/Sound/Music_HScrollBar" to="MainMenu/OptionContainer/TabContainer/Sound/Music_HScrollBar/Scroll_Label" method="_on_h_scroll_bar_value_changed"]
+[connection signal="value_changed" from="MainMenu/OptionContainer/TabContainer/Sound/SFX_HScrollBar" to="MainMenu" method="_on_sfx_h_scroll_bar_value_changed"]
 [connection signal="value_changed" from="MainMenu/OptionContainer/TabContainer/Sound/SFX_HScrollBar" to="MainMenu/OptionContainer/TabContainer/Sound/SFX_HScrollBar/Scroll_Label" method="_on_h_scroll_bar_value_changed"]

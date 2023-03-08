@@ -1,9 +1,9 @@
 extends Control
 # Please check the documentation about
 # Displayserver class : https://docs.godotengine.org/en/stable/classes/class_displayserver.html
-#
+
 #--
-# Check out Colorblind add for godot : https://github.com/paulloz/godot-colorblindness
+# Check out Colorblind addon for godot : https://github.com/paulloz/godot-colorblindness
 #--
 
 @onready var Resolution_ob = get_node("%Resolution_Optionbutton")
@@ -42,6 +42,8 @@ func _on_exit_button_pressed():
 	get_tree().quit()
 
 
+# -- VIDEO TAB --
+
 func _on_resolution_optionbutton_item_selected(index):
 	DisplayServer.window_set_size(_get_resolution(index))
 	
@@ -58,3 +60,19 @@ func _on_vsync_check_button_pressed():
 
 func _on_preset_h_slider_value_changed(value):
 	pass # Replace with function body.
+
+
+# -- OPTION TAB --
+
+func _on_general_h_scroll_bar_value_changed(value):
+	pass # Replace with function body.
+
+
+func _on_music_h_scroll_bar_value_changed(value):
+	pass # Replace with function body.
+
+
+func _on_sfx_h_scroll_bar_value_changed(value):
+	pass # Replace with function body.
+
+# -- CONTROL TAB --
