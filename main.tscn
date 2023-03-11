@@ -65,7 +65,6 @@ layout_mode = 2
 tab_alignment = 1
 
 [node name="Video" type="TabBar" parent="MainMenu/OptionContainer/TabContainer"]
-visible = false
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
@@ -197,6 +196,7 @@ offset_bottom = -1.0
 text = " Low  	   medium          high 	    very high      ultra"
 
 [node name="Sound" type="TabBar" parent="MainMenu/OptionContainer/TabContainer"]
+visible = false
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
