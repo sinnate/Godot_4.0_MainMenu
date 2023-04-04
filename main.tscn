@@ -13,9 +13,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
 script = ExtResource("1_7x6vp")
 
 [node name="MainContainer" type="VBoxContainer" parent="MainMenu"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 1
 anchors_preset = 8
@@ -23,10 +25,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -50.5
-offset_right = 100.0
-offset_bottom = 50.5
+offset_left = -120.0
+offset_top = -50.0
+offset_right = 120.0
+offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -40,11 +42,13 @@ text = "OPTION"
 
 [node name="Exit_button" type="Button" parent="MainMenu/MainContainer"]
 layout_mode = 2
+size_flags_vertical = 4
 text = "EXIT
 "
 
 [node name="OptionContainer" type="VBoxContainer" parent="MainMenu"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(500, 500)
 layout_mode = 1
 anchors_preset = 8
@@ -278,13 +282,25 @@ offset_bottom = 21.0
 text = "67%"
 script = ExtResource("3_v2ba3")
 
-[node name="Control" type="TabBar" parent="MainMenu/OptionContainer/TabContainer"]
-visible = false
-custom_minimum_size = Vector2(0, 20)
+[node name="Container" type="HBoxContainer" parent="MainMenu/OptionContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="Apply_button" type="Button" parent="MainMenu/OptionContainer/Container"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+text = "Apply
+"
+
+[node name="Return_button" type="Button" parent="MainMenu/OptionContainer/Container"]
+layout_mode = 2
+text = "Return
+"
 
 [connection signal="pressed" from="MainMenu/MainContainer/Start_button" to="MainMenu" method="_on_start_button_pressed"]
-[connection signal="toggled" from="MainMenu/MainContainer/Option_button" to="MainMenu" method="_on_option_button_toggled"]
+[connection signal="pressed" from="MainMenu/MainContainer/Option_button" to="MainMenu" method="_on_option_button_pressed"]
 [connection signal="pressed" from="MainMenu/MainContainer/Exit_button" to="MainMenu" method="_on_exit_button_pressed"]
 [connection signal="item_selected" from="MainMenu/OptionContainer/TabContainer/Video/Resolution_Optionbutton" to="MainMenu" method="_on_resolution_optionbutton_item_selected"]
 [connection signal="item_selected" from="MainMenu/OptionContainer/TabContainer/Video/WindowMode_Optionbutton" to="MainMenu" method="_on_window_mode_optionbutton_item_selected"]
@@ -296,3 +312,5 @@ layout_mode = 2
 [connection signal="value_changed" from="MainMenu/OptionContainer/TabContainer/Sound/Music_HScrollBar" to="MainMenu/OptionContainer/TabContainer/Sound/Music_HScrollBar/Scroll_Label" method="_on_h_scroll_bar_value_changed"]
 [connection signal="value_changed" from="MainMenu/OptionContainer/TabContainer/Sound/SFX_HScrollBar" to="MainMenu" method="_on_sfx_h_scroll_bar_value_changed"]
 [connection signal="value_changed" from="MainMenu/OptionContainer/TabContainer/Sound/SFX_HScrollBar" to="MainMenu/OptionContainer/TabContainer/Sound/SFX_HScrollBar/Scroll_Label" method="_on_h_scroll_bar_value_changed"]
+[connection signal="pressed" from="MainMenu/OptionContainer/Container/Apply_button" to="MainMenu" method="_on_apply_button_pressed"]
+[connection signal="pressed" from="MainMenu/OptionContainer/Container/Return_button" to="MainMenu" method="_on_return_button_pressed"]

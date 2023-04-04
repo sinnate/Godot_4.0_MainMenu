@@ -8,8 +8,15 @@ extends Control
 
 @onready var Resolution_ob = get_node("%Resolution_Optionbutton")
 @onready var OptionContainer = get_node("%OptionContainer")
+@onready var MainContainer = get_node("%MainContainer")
 
-func _get_resolution(index):
+# Config file
+var SettingsFile = ConfigFile.new()
+var Vsync : bool = false
+
+
+
+func _get_resolution(index) -> Vector2i:
 	var resolution_arr = Resolution_ob.get_item_text(index).split("x")
 	return Vector2i(int(resolution_arr[0]),int(resolution_arr[1]))
 
@@ -18,11 +25,49 @@ func _check_resolution( resolution : Vector2i):
 		if _get_resolution(i) == resolution :
 			return i
 
-
-func _ready():
+func _first_time() -> void:
 	DisplayServer.window_set_size(DisplayServer.screen_get_size())
 	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
 	Resolution_ob.select(_check_resolution(DisplayServer.screen_get_size()))
+	# -- Video
+	SettingsFile.set_value("VIDEO","Resolution",_get_resolution(Resolution_ob.get_index()))
+	SettingsFile.set_value("VIDEO","Vsync",Vsync)
+	SettingsFile.set_value("VIDEO","Window Mode",_get_resolution(Resolution_ob.get_index()))
+	SettingsFile.set_value("VIDEO","Graphics",_get_resolution(Resolution_ob.get_index()))
+	SettingsFile.set_value("VIDEO","Color blind",_get_resolution(Resolution_ob.get_index()))
+	# -- Audio
+	SettingsFile.set_value("AUDIO","General",_get_resolution(Resolution_ob.get_index()))
+	SettingsFile.set_value("AUDIO","Music",Vsync)
+	SettingsFile.set_value("AUDIO","SFX",_get_resolution(Resolution_ob.get_index()))
+	
+	SettingsFile.save("user://settings.cfg")
+
+
+func _load_settings():
+	if (SettingsFile.load("user://settings.cfg") != OK):
+		return
+	else:
+		pass
+func _save_settings() -> void:
+	# -- Video
+	SettingsFile.set_value("VIDEO","Resolution",_get_resolution(Resolution_ob.get_index()))
+	SettingsFile.set_value("VIDEO","Vsync",Vsync)
+	SettingsFile.set_value("VIDEO","Window Mode",_get_resolution(Resolution_ob.get_index()))
+	SettingsFile.set_value("VIDEO","Graphics",_get_resolution(Resolution_ob.get_index()))
+	SettingsFile.set_value("VIDEO","Color blind",_get_resolution(Resolution_ob.get_index()))
+	# -- Audio
+	SettingsFile.set_value("AUDIO","General",_get_resolution(Resolution_ob.get_index()))
+	SettingsFile.set_value("AUDIO","Music",Vsync)
+	SettingsFile.set_value("AUDIO","SFX",_get_resolution(Resolution_ob.get_index()))
+	
+	SettingsFile.save("user://settings.cfg")
+
+
+
+func _ready():
+	_load_settings()
+	Resolution_ob.select(_check_resolution(DisplayServer.screen_get_size()))
+
 
 
 
@@ -34,8 +79,11 @@ func _on_start_button_pressed():
 	pass # Replace with function body.
 
 
-func _on_option_button_toggled(button_pressed):
-	pass # Replace with function body.
+
+func _on_option_button_pressed():
+	OptionContainer.visible = true
+	MainContainer.visible = false
+
 
 
 func _on_exit_button_pressed():
@@ -55,7 +103,8 @@ func _on_window_mode_optionbutton_item_selected(index):
 
 
 func _on_vsync_check_button_pressed():
-	pass # Replace with function body.
+	Vsync = !Vsync
+	print(Vsync)
 
 
 func _on_preset_h_slider_value_changed(value):
@@ -75,4 +124,16 @@ func _on_music_h_scroll_bar_value_changed(value):
 func _on_sfx_h_scroll_bar_value_changed(value):
 	pass # Replace with function body.
 
-# -- CONTROL TAB --
+
+# -- Save and Exit buttons
+
+func _on_return_button_pressed():
+	MainContainer.visible = true
+	OptionContainer.visible = false
+
+
+func _on_apply_button_pressed():
+	MainContainer.visible = true
+	OptionContainer.visible = false
+	_save_settings()
+
