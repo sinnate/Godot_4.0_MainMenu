@@ -11,9 +11,13 @@ extends Control
 @onready var MainContainer = get_node("%MainContainer")
 
 # Config file
+# Move it into a singleton 
 var SettingsFile = ConfigFile.new()
-var Vsync : bool = false
-
+#--
+var Vsync : int = 0
+# I'm a Vector3 instead of 3 var float
+# - x : General , y : Music , z : SFX
+var Audio : Vector3 = Vector3(70.0,70.0,70.0)
 
 
 func _get_resolution(index) -> Vector2i:
@@ -28,6 +32,7 @@ func _check_resolution( resolution : Vector2i):
 func _first_time() -> void:
 	DisplayServer.window_set_size(DisplayServer.screen_get_size())
 	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
+	DisplayServer.window_set_vsync_mode(Vsync)
 	Resolution_ob.select(_check_resolution(DisplayServer.screen_get_size()))
 	# -- Video
 	SettingsFile.set_value("VIDEO","Resolution",_get_resolution(Resolution_ob.get_index()))
@@ -36,16 +41,16 @@ func _first_time() -> void:
 	SettingsFile.set_value("VIDEO","Graphics",_get_resolution(Resolution_ob.get_index()))
 	SettingsFile.set_value("VIDEO","Color blind",_get_resolution(Resolution_ob.get_index()))
 	# -- Audio
-	SettingsFile.set_value("AUDIO","General",_get_resolution(Resolution_ob.get_index()))
-	SettingsFile.set_value("AUDIO","Music",Vsync)
-	SettingsFile.set_value("AUDIO","SFX",_get_resolution(Resolution_ob.get_index()))
+	SettingsFile.set_value("AUDIO","General",Audio.x)
+	SettingsFile.set_value("AUDIO","Music",Audio.y)
+	SettingsFile.set_value("AUDIO","SFX",Audio.z)
 	
 	SettingsFile.save("user://settings.cfg")
 
 
 func _load_settings():
 	if (SettingsFile.load("user://settings.cfg") != OK):
-		return
+		_first_time()
 	else:
 		pass
 func _save_settings() -> void:
@@ -56,9 +61,9 @@ func _save_settings() -> void:
 	SettingsFile.set_value("VIDEO","Graphics",_get_resolution(Resolution_ob.get_index()))
 	SettingsFile.set_value("VIDEO","Color blind",_get_resolution(Resolution_ob.get_index()))
 	# -- Audio
-	SettingsFile.set_value("AUDIO","General",_get_resolution(Resolution_ob.get_index()))
-	SettingsFile.set_value("AUDIO","Music",Vsync)
-	SettingsFile.set_value("AUDIO","SFX",_get_resolution(Resolution_ob.get_index()))
+	SettingsFile.set_value("AUDIO","General",Audio.x)
+	SettingsFile.set_value("AUDIO","Music",Audio.y)
+	SettingsFile.set_value("AUDIO","SFX",Audio.z)
 	
 	SettingsFile.save("user://settings.cfg")
 
@@ -94,35 +99,32 @@ func _on_exit_button_pressed():
 
 func _on_resolution_optionbutton_item_selected(index):
 	DisplayServer.window_set_size(_get_resolution(index))
-	
-	#Window.size = _get_resolution(index)
+
 
 
 func _on_window_mode_optionbutton_item_selected(index):
 	pass # Replace with function body.
 
 
-func _on_vsync_check_button_pressed():
-	Vsync = !Vsync
-	print(Vsync)
 
 
 func _on_preset_h_slider_value_changed(value):
+	# start here https://docs.godotengine.org/en/stable/tutorials/3d/mesh_lod.html
 	pass # Replace with function body.
 
 
-# -- OPTION TAB --
+# -- AUDIO TAB --
 
 func _on_general_h_scroll_bar_value_changed(value):
-	pass # Replace with function body.
+	Audio.x = value
 
 
 func _on_music_h_scroll_bar_value_changed(value):
-	pass # Replace with function body.
+	Audio.y = value
 
 
 func _on_sfx_h_scroll_bar_value_changed(value):
-	pass # Replace with function body.
+	Audio.z = value
 
 
 # -- Save and Exit buttons
@@ -137,3 +139,8 @@ func _on_apply_button_pressed():
 	OptionContainer.visible = false
 	_save_settings()
 
+
+
+func _on_vsync_option_button_item_selected(index):
+	# check the documentation about Vsync : https://docs.godotengine.org/en/stable/classes/class_displayserver.html#enum-displayserver-vsyncmode
+	Vsync = index
