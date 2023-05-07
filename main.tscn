@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://biyyejk3jgomd"]
+[gd_scene load_steps=5 format=3 uid="uid://biyyejk3jgomd"]
 
 [ext_resource type="Script" path="res://src/menu_controller.gd" id="1_7x6vp"]
+[ext_resource type="Texture2D" uid="uid://c7ycnhy7dx87w" path="res://res/00000.png" id="1_lg33l"]
 [ext_resource type="LabelSettings" uid="uid://1oyxx8ys1m6d" path="res://font.res" id="2_yfgsl"]
 [ext_resource type="Script" path="res://src/Scroll_Label.gd" id="3_v2ba3"]
 
@@ -16,9 +17,12 @@ grow_vertical = 2
 size_flags_horizontal = 4
 script = ExtResource("1_7x6vp")
 
+[node name="Bg" type="Sprite2D" parent="MainMenu"]
+position = Vector2(960, 544)
+texture = ExtResource("1_lg33l")
+
 [node name="MainContainer" type="VBoxContainer" parent="MainMenu"]
 unique_name_in_owner = true
-visible = false
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 1
 anchors_preset = 8
@@ -49,6 +53,7 @@ text = "EXIT
 
 [node name="OptionContainer" type="VBoxContainer" parent="MainMenu"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(500, 500)
 layout_mode = 1
 anchors_preset = 8

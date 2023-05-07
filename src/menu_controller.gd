@@ -45,11 +45,11 @@ func _first_time() -> void:
 	SettingsFile.set_value("AUDIO","Music",Audio.y)
 	SettingsFile.set_value("AUDIO","SFX",Audio.z)
 	
-	SettingsFile.save("user://settings.cfg")
+	SettingsFile.save("res://settings.cfg")
 
 
 func _load_settings():
-	if (SettingsFile.load("user://settings.cfg") != OK):
+	if (SettingsFile.load("res://settings.cfg") != OK):
 		_first_time()
 	else:
 		pass
@@ -65,7 +65,7 @@ func _save_settings() -> void:
 	SettingsFile.set_value("AUDIO","Music",Audio.y)
 	SettingsFile.set_value("AUDIO","SFX",Audio.z)
 	
-	SettingsFile.save("user://settings.cfg")
+	SettingsFile.save("res://settings.cfg")
 
 
 
