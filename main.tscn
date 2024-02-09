@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://src/menu_controller.gd" id="1_7x6vp"]
 [ext_resource type="Texture2D" uid="uid://c7ycnhy7dx87w" path="res://res/00000.png" id="1_lg33l"]
 [ext_resource type="LabelSettings" uid="uid://1oyxx8ys1m6d" path="res://font.res" id="2_yfgsl"]
-[ext_resource type="Script" path="res://src/Scroll_Label.gd" id="3_v2ba3"]
+[ext_resource type="Script" path="res://src/scroll_label.gd" id="3_v2ba3"]
 
 [node name="main" type="Node"]
 
