@@ -14,7 +14,7 @@ var vsync: int = 0
 # I'm a Vector3 instead of 3 var float
 # - x : General , y : Music , z : SFX
 var audio: Vector3 = Vector3(70.0, 70.0, 70.0)
-
+var display_resolution : Vector2i = DisplayServer.screen_get_size()
 
 
 @onready var resolution_option_button = get_node("%Resolution_Optionbutton")
@@ -58,7 +58,15 @@ func _load_settings():
 	if settings_file.load("res://settings.cfg") != OK:
 		_first_time()
 	else:
-		pass
+		display_resolution = settings_file.get_value("VIDEO","Resolution")
+		get_window().size = display_resolution
+		audio.x = settings_file.get_value("audio", "General")
+		audio.y = settings_file.get_value("audio", "Music")
+		audio.z =settings_file.get_value("audio", "SFX")
+		%General_HScrollBar.value = audio.x 
+		%Music_HScrollbar.value = audio.y
+		%SFX_Hscrollbar.value = audio.z
+
 
 
 func _save_settings() -> void:
@@ -78,7 +86,7 @@ func _save_settings() -> void:
 
 func _ready():
 	_load_settings()
-	resolution_option_button.select(_check_resolution(DisplayServer.screen_get_size()))
+	resolution_option_button.select(_check_resolution(display_resolution))
 
 
 func _on_start_button_pressed():

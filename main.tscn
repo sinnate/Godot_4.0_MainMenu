@@ -7,7 +7,9 @@
 
 [node name="main" type="Node"]
 
-[node name="MainMenu" type="Control" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MainMenu" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,11 +19,17 @@ grow_vertical = 2
 size_flags_horizontal = 4
 script = ExtResource("1_7x6vp")
 
-[node name="Bg" type="Sprite2D" parent="MainMenu"]
-position = Vector2(960, 544)
+[node name="Bg" type="TextureRect" parent="CanvasLayer/MainMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("1_lg33l")
+expand_mode = 1
 
-[node name="MainContainer" type="VBoxContainer" parent="MainMenu"]
+[node name="MainContainer" type="VBoxContainer" parent="CanvasLayer/MainMenu"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 1
@@ -37,21 +45,21 @@ offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Start_button" type="Button" parent="MainMenu/MainContainer"]
+[node name="Start_button" type="Button" parent="CanvasLayer/MainMenu/MainContainer"]
 layout_mode = 2
 text = "START"
 
-[node name="Option_button" type="Button" parent="MainMenu/MainContainer"]
+[node name="Option_button" type="Button" parent="CanvasLayer/MainMenu/MainContainer"]
 layout_mode = 2
 text = "OPTION"
 
-[node name="Exit_button" type="Button" parent="MainMenu/MainContainer"]
+[node name="Exit_button" type="Button" parent="CanvasLayer/MainMenu/MainContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 text = "EXIT
 "
 
-[node name="OptionContainer" type="VBoxContainer" parent="MainMenu"]
+[node name="OptionContainer" type="VBoxContainer" parent="CanvasLayer/MainMenu"]
 unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(500, 500)
@@ -68,16 +76,16 @@ offset_bottom = 250.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TabContainer" type="TabContainer" parent="MainMenu/OptionContainer"]
+[node name="TabContainer" type="TabContainer" parent="CanvasLayer/MainMenu/OptionContainer"]
 custom_minimum_size = Vector2(0, 500)
 layout_mode = 2
 tab_alignment = 1
 
-[node name="Video" type="TabBar" parent="MainMenu/OptionContainer/TabContainer"]
+[node name="Video" type="TabBar" parent="CanvasLayer/MainMenu/OptionContainer/TabContainer"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
-[node name="General_Label" type="Label" parent="MainMenu/OptionContainer/TabContainer/Video"]
+[node name="General_Label" type="Label" parent="CanvasLayer/MainMenu/OptionContainer/TabContainer/Video"]
 layout_mode = 0
 offset_left = 26.0
 offset_top = 2.0
@@ -86,7 +94,7 @@ offset_bottom = 31.0
 text = "General"
 label_settings = ExtResource("2_yfgsl")
 
-[node name="Resolution_Label" type="Label" parent="MainMenu/OptionContainer/TabContainer/Video"]
+[node name="Resolution_Label" type="Label" parent="CanvasLayer/MainMenu/OptionContainer/TabContainer/Video"]
 layout_mode = 0
 offset_left = 82.0
 offset_top = 42.0
@@ -94,7 +102,7 @@ offset_right = 173.0
 offset_bottom = 68.0
 text = "Resolution :"
 
-[node name="Resolution_Optionbutton" type="OptionButton" parent="MainMenu/OptionContainer/TabContainer/Video"]
+[node name="Resolution_Optionbutton" type="OptionButton" parent="CanvasLayer/MainMenu/OptionContainer/TabContainer/Video"]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 26.0
@@ -123,7 +131,7 @@ popup/item_8/id = 8
 popup/item_9/text = "7680x4320"
 popup/item_9/id = 9
 
-[node name="WindowMode_Label" type="Label" parent="MainMenu/OptionContainer/TabContainer/Video"]
+[node name="WindowMode_Label" type="Label" parent="CanvasLayer/MainMenu/OptionContainer/TabContainer/Video"]
 layout_mode = 0
 offset_left = 314.0
 offset_top = 42.0
@@ -131,14 +139,14 @@ offset_right = 434.0
 offset_bottom = 68.0
 text = "Window Mode :"
 
-[node name="WindowMode_Optionbutton" type="OptionButton" parent="MainMenu/OptionContainer/TabContainer/Video"]
+[node name="WindowMode_Optionbutton" type="OptionButton" parent="CanvasLayer/MainMenu/OptionContainer/TabContainer/Video"]
 layout_mode = 0
 offset_left = 298.0
 offset_top = 73.0
 offset_right = 474.0
 offset_bottom = 105.0
 
-[node name="Vsync_Label" type="Label" parent="MainMenu/OptionContainer/TabContainer/Video"]
+[node name="Vsync_Label" type="Label" parent="CanvasLayer/MainMenu/OptionContainer/TabContainer/Video"]
 layout_mode = 0
 offset_left = 100.0
 offset_top = 132.0
@@ -146,7 +154,7 @@ offset_right = 145.0
 offset_bottom = 158.0
 text = "Vsync"
 
-[node name="Vsync_OptionButton" type="OptionButton" parent="MainMenu/OptionContainer/TabContainer/Video"]
+[node name="Vsync_OptionButton" type="OptionButton" parent="CanvasLayer/MainMenu/OptionContainer/TabContainer/Video"]
 layout_mode = 0
 offset_left = 26.0
 offset_top = 169.0
@@ -162,7 +170,7 @@ popup/item_2/id = 2
 popup/item_3/text = "MailBox"
 popup/item_3/id = 3
 
-[node name="Color_blind" type="Label" parent="MainMenu/OptionContainer/TabContainer/Video"]
+[node name="Color_blind" type="Label" parent="CanvasLayer/MainMenu/OptionContainer/TabContainer/Video"]
 layout_mode = 0
 offset_left = 318.0
 offset_top = 131.0
@@ -170,7 +178,7 @@ offset_right = 451.0
 offset_bottom = 157.0
 text = "Color blind mode"
 
-[node name="ColorBlind_OptionButton" type="OptionButton" parent="MainMenu/OptionContainer/TabContainer/Video"]
+[node name="ColorBlind_OptionButton" type="OptionButton" parent="CanvasLayer/MainMenu/OptionContainer/TabContainer/Video"]
 layout_mode = 0
 offset_left = 298.0
 offset_top = 169.0
@@ -187,7 +195,7 @@ popup/item_2/id = 2
 popup/item_3/text = "Tritanopia"
 popup/item_3/id = 3
 
-[node name="Graphics_Label" type="Label" parent="MainMenu/OptionContainer/TabContainer/Video"]
+[node name="Graphics_Label" type="Label" parent="CanvasLayer/MainMenu/OptionContainer/TabContainer/Video"]
 layout_mode = 0
 offset_left = 26.0
 offset_top = 256.0
@@ -196,7 +204,7 @@ offset_bottom = 285.0
 text = "Graphics"
 label_settings = ExtResource("2_yfgsl")
 
-[node name="Preset_HSlider" type="HSlider" parent="MainMenu/OptionContainer/TabContainer/Video"]
+[node name="Preset_HSlider" type="HSlider" parent="CanvasLayer/MainMenu/OptionContainer/TabContainer/Video"]
 layout_mode = 0
 offset_left = 26.0
 offset_top = 342.0
@@ -206,19 +214,19 @@ max_value = 20.0
 step = 5.0
 value = 5.0
 
-[node name="Preset_Label" type="Label" parent="MainMenu/OptionContainer/TabContainer/Video/Preset_HSlider"]
+[node name="Preset_Label" type="Label" parent="CanvasLayer/MainMenu/OptionContainer/TabContainer/Video/Preset_HSlider"]
 layout_mode = 0
 offset_top = -24.0
 offset_right = 352.0
 offset_bottom = -1.0
 text = " Low  	   medium          high 	    very high      ultra"
 
-[node name="Sound" type="TabBar" parent="MainMenu/OptionContainer/TabContainer"]
+[node name="Sound" type="TabBar" parent="CanvasLayer/MainMenu/OptionContainer/TabContainer"]
 visible = false
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
-[node name="General_Label" type="Label" parent="MainMenu/OptionContainer/TabContainer/Sound"]
+[node name="General_Label" type="Label" parent="CanvasLayer/MainMenu/OptionContainer/TabContainer/Sound"]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 46.0
@@ -226,7 +234,8 @@ offset_right = 48.0
 offset_bottom = 69.0
 text = "General volume :"
 
-[node name="General_HScrollBar" type="HScrollBar" parent="MainMenu/OptionContainer/TabContainer/Sound"]
+[node name="General_HScrollBar" type="HScrollBar" parent="CanvasLayer/MainMenu/OptionContainer/TabContainer/Sound"]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 10.0
 offset_top = 78.0
@@ -235,7 +244,7 @@ offset_bottom = 94.0
 value = 70.0
 rounded = true
 
-[node name="Scroll_Label" type="Label" parent="MainMenu/OptionContainer/TabContainer/Sound/General_HScrollBar"]
+[node name="Scroll_Label" type="Label" parent="CanvasLayer/MainMenu/OptionContainer/TabContainer/Sound/General_HScrollBar"]
 layout_mode = 0
 offset_left = 456.0
 offset_top = -5.0
@@ -244,7 +253,7 @@ offset_bottom = 21.0
 text = "70%"
 script = ExtResource("3_v2ba3")
 
-[node name="Music_Label" type="Label" parent="MainMenu/OptionContainer/TabContainer/Sound"]
+[node name="Music_Label" type="Label" parent="CanvasLayer/MainMenu/OptionContainer/TabContainer/Sound"]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 99.0
@@ -252,7 +261,8 @@ offset_right = 142.0
 offset_bottom = 125.0
 text = "Music volume :"
 
-[node name="Music_HScrollBar" type="HScrollBar" parent="MainMenu/OptionContainer/TabContainer/Sound"]
+[node name="Music_HScrollBar" type="HScrollBar" parent="CanvasLayer/MainMenu/OptionContainer/TabContainer/Sound"]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 10.0
 offset_top = 124.0
@@ -261,7 +271,7 @@ offset_bottom = 140.0
 value = 67.0
 rounded = true
 
-[node name="Scroll_Label" type="Label" parent="MainMenu/OptionContainer/TabContainer/Sound/Music_HScrollBar"]
+[node name="Scroll_Label" type="Label" parent="CanvasLayer/MainMenu/OptionContainer/TabContainer/Sound/Music_HScrollBar"]
 layout_mode = 0
 offset_left = 456.0
 offset_top = -5.0
@@ -270,7 +280,7 @@ offset_bottom = 21.0
 text = "67%"
 script = ExtResource("3_v2ba3")
 
-[node name="SFX_Label" type="Label" parent="MainMenu/OptionContainer/TabContainer/Sound"]
+[node name="SFX_Label" type="Label" parent="CanvasLayer/MainMenu/OptionContainer/TabContainer/Sound"]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 146.0
@@ -278,7 +288,8 @@ offset_right = 142.0
 offset_bottom = 172.0
 text = "SFX volume :"
 
-[node name="SFX_HScrollBar" type="HScrollBar" parent="MainMenu/OptionContainer/TabContainer/Sound"]
+[node name="SFX_HScrollBar" type="HScrollBar" parent="CanvasLayer/MainMenu/OptionContainer/TabContainer/Sound"]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 10.0
 offset_top = 171.0
@@ -287,7 +298,7 @@ offset_bottom = 187.0
 value = 67.0
 rounded = true
 
-[node name="Scroll_Label" type="Label" parent="MainMenu/OptionContainer/TabContainer/Sound/SFX_HScrollBar"]
+[node name="Scroll_Label" type="Label" parent="CanvasLayer/MainMenu/OptionContainer/TabContainer/Sound/SFX_HScrollBar"]
 layout_mode = 0
 offset_left = 456.0
 offset_top = -5.0
@@ -296,35 +307,35 @@ offset_bottom = 21.0
 text = "67%"
 script = ExtResource("3_v2ba3")
 
-[node name="Container" type="HBoxContainer" parent="MainMenu/OptionContainer"]
+[node name="Container" type="HBoxContainer" parent="CanvasLayer/MainMenu/OptionContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 alignment = 1
 
-[node name="Apply_button" type="Button" parent="MainMenu/OptionContainer/Container"]
+[node name="Apply_button" type="Button" parent="CanvasLayer/MainMenu/OptionContainer/Container"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 text = "Apply
 "
 
-[node name="Return_button" type="Button" parent="MainMenu/OptionContainer/Container"]
+[node name="Return_button" type="Button" parent="CanvasLayer/MainMenu/OptionContainer/Container"]
 layout_mode = 2
 text = "Return
 "
 
-[connection signal="pressed" from="MainMenu/MainContainer/Start_button" to="MainMenu" method="_on_start_button_pressed"]
-[connection signal="pressed" from="MainMenu/MainContainer/Option_button" to="MainMenu" method="_on_option_button_pressed"]
-[connection signal="pressed" from="MainMenu/MainContainer/Exit_button" to="MainMenu" method="_on_exit_button_pressed"]
-[connection signal="item_selected" from="MainMenu/OptionContainer/TabContainer/Video/Resolution_Optionbutton" to="MainMenu" method="_on_resolution_optionbutton_item_selected"]
-[connection signal="item_selected" from="MainMenu/OptionContainer/TabContainer/Video/WindowMode_Optionbutton" to="MainMenu" method="_on_window_mode_optionbutton_item_selected"]
-[connection signal="item_selected" from="MainMenu/OptionContainer/TabContainer/Video/Vsync_OptionButton" to="MainMenu" method="_on_vsync_option_button_item_selected"]
-[connection signal="value_changed" from="MainMenu/OptionContainer/TabContainer/Video/Preset_HSlider" to="MainMenu" method="_on_preset_h_slider_value_changed"]
-[connection signal="value_changed" from="MainMenu/OptionContainer/TabContainer/Sound/General_HScrollBar" to="MainMenu" method="_on_general_h_scroll_bar_value_changed"]
-[connection signal="value_changed" from="MainMenu/OptionContainer/TabContainer/Sound/General_HScrollBar" to="MainMenu/OptionContainer/TabContainer/Sound/General_HScrollBar/Scroll_Label" method="_on_h_scroll_bar_value_changed"]
-[connection signal="value_changed" from="MainMenu/OptionContainer/TabContainer/Sound/Music_HScrollBar" to="MainMenu" method="_on_music_h_scroll_bar_value_changed"]
-[connection signal="value_changed" from="MainMenu/OptionContainer/TabContainer/Sound/Music_HScrollBar" to="MainMenu/OptionContainer/TabContainer/Sound/Music_HScrollBar/Scroll_Label" method="_on_h_scroll_bar_value_changed"]
-[connection signal="value_changed" from="MainMenu/OptionContainer/TabContainer/Sound/SFX_HScrollBar" to="MainMenu" method="_on_sfx_h_scroll_bar_value_changed"]
-[connection signal="value_changed" from="MainMenu/OptionContainer/TabContainer/Sound/SFX_HScrollBar" to="MainMenu/OptionContainer/TabContainer/Sound/SFX_HScrollBar/Scroll_Label" method="_on_h_scroll_bar_value_changed"]
-[connection signal="pressed" from="MainMenu/OptionContainer/Container/Apply_button" to="MainMenu" method="_on_apply_button_pressed"]
-[connection signal="pressed" from="MainMenu/OptionContainer/Container/Return_button" to="MainMenu" method="_on_return_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainMenu/MainContainer/Start_button" to="CanvasLayer/MainMenu" method="_on_start_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainMenu/MainContainer/Option_button" to="CanvasLayer/MainMenu" method="_on_option_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainMenu/MainContainer/Exit_button" to="CanvasLayer/MainMenu" method="_on_exit_button_pressed"]
+[connection signal="item_selected" from="CanvasLayer/MainMenu/OptionContainer/TabContainer/Video/Resolution_Optionbutton" to="CanvasLayer/MainMenu" method="_on_resolution_optionbutton_item_selected"]
+[connection signal="item_selected" from="CanvasLayer/MainMenu/OptionContainer/TabContainer/Video/WindowMode_Optionbutton" to="CanvasLayer/MainMenu" method="_on_window_mode_optionbutton_item_selected"]
+[connection signal="item_selected" from="CanvasLayer/MainMenu/OptionContainer/TabContainer/Video/Vsync_OptionButton" to="CanvasLayer/MainMenu" method="_on_vsync_option_button_item_selected"]
+[connection signal="value_changed" from="CanvasLayer/MainMenu/OptionContainer/TabContainer/Video/Preset_HSlider" to="CanvasLayer/MainMenu" method="_on_preset_h_slider_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/MainMenu/OptionContainer/TabContainer/Sound/General_HScrollBar" to="CanvasLayer/MainMenu" method="_on_general_h_scroll_bar_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/MainMenu/OptionContainer/TabContainer/Sound/General_HScrollBar" to="CanvasLayer/MainMenu/OptionContainer/TabContainer/Sound/General_HScrollBar/Scroll_Label" method="_on_h_scroll_bar_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/MainMenu/OptionContainer/TabContainer/Sound/Music_HScrollBar" to="CanvasLayer/MainMenu" method="_on_music_h_scroll_bar_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/MainMenu/OptionContainer/TabContainer/Sound/Music_HScrollBar" to="CanvasLayer/MainMenu/OptionContainer/TabContainer/Sound/Music_HScrollBar/Scroll_Label" method="_on_h_scroll_bar_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/MainMenu/OptionContainer/TabContainer/Sound/SFX_HScrollBar" to="CanvasLayer/MainMenu" method="_on_sfx_h_scroll_bar_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/MainMenu/OptionContainer/TabContainer/Sound/SFX_HScrollBar" to="CanvasLayer/MainMenu/OptionContainer/TabContainer/Sound/SFX_HScrollBar/Scroll_Label" method="_on_h_scroll_bar_value_changed"]
+[connection signal="pressed" from="CanvasLayer/MainMenu/OptionContainer/Container/Apply_button" to="CanvasLayer/MainMenu" method="_on_apply_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainMenu/OptionContainer/Container/Return_button" to="CanvasLayer/MainMenu" method="_on_return_button_pressed"]
