@@ -100,7 +100,7 @@ func _on_exit_button_pressed():
 
 
 func _on_resolution_optionbutton_item_selected(index):
-	DisplayServer.window_set_size(_get_resolution(index))
+	get_window().size = _get_resolution(index)
 
 
 func _on_window_mode_optionbutton_item_selected(_index):
