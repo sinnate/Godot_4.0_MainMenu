@@ -64,8 +64,8 @@ func _load_settings():
 		audio.y = settings_file.get_value("audio", "Music")
 		audio.z =settings_file.get_value("audio", "SFX")
 		%General_HScrollBar.value = audio.x 
-		%Music_HScrollbar.value = audio.y
-		%SFX_Hscrollbar.value = audio.z
+		%Music_HScrollBar.value = audio.y
+		%SFX_HScrollBar.value = audio.z
 
 
 
